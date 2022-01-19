@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model
@@ -16,5 +17,11 @@ class Attendance extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function scopeCountAttendance($query,$status)
+    {
+        return $query->whereDate('created_at', Carbon::today())
+                ->where('status',$status)->count();
     }
 }
