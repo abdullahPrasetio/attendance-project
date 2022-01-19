@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PasswordController extends Controller
 {
-    // use SendsPasswordResetEmails;
+    use SendsPasswordResetEmails;
 
     public function reset(Request $request)
     {
