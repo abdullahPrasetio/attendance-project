@@ -25,3 +25,8 @@ Route::group(["prefix"=> "auth"],function(){
 
     Route::post('/password/reset','Api\\Auth\\PasswordController@reset')->middleware('auth:sanctum');
 });
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::post('attendance', 'Api\\AttendanceController@store');
+    Route::get('attendance/history', 'Api\\AttendanceController@history');
+});
