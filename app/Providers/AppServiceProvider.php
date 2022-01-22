@@ -3,8 +3,9 @@
 namespace App\Providers;
 
 
-use ConsoleTVs\Charts\Registrar as Charts;
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
+use ConsoleTVs\Charts\Registrar as Charts;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Charts $charts)
     {
+        config(['app.locale' => 'id']);
+	    Carbon::setLocale('id');
         $charts->register([
             \App\Charts\AttendanceChart::class
         ]);
